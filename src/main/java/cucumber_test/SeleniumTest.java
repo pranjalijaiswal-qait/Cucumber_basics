@@ -11,8 +11,9 @@ public class SeleniumTest {
      private static WebDriver driver=null;
      
 	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.chrome.driver","C:/Users/prakhersrivastava/Downloads/chromedriver_win32/chromedriver.exe");
+	    System.setProperty("webdriver.chrome.driver","C:/Users/prakhersrivastava/Downloads/chromedriver_win32/chromedriver.exe");
 		driver =new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.get("http://www.gmail.com");
 		WebElement web_mail_id=driver.findElement(By.id("identifierId"));
 		web_mail_id.sendKeys("pranjalijaiswal119@gmail.com");
@@ -24,6 +25,8 @@ public class SeleniumTest {
 		WebElement signout=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//*[@id='gb']/div[1]/div[1]/div[2]/div[4]/div[1]/a/span")));
 		signout.click();
 		driver.findElement(By.xpath(".//*[@id='gb_71']")).click();
+		Thread.sleep(3000);
+		driver.close();
 	}
 
 }

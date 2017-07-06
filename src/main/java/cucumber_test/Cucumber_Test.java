@@ -7,6 +7,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features = "Feature"
 		,glue={"stepDefinition"}
+		,monochrome=true
+		//,format = {"pretty"}
 		)
 public class Cucumber_Test {
 

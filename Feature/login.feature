@@ -17,17 +17,22 @@
 ## (Comments)
 
 #Sample Feature Definition Template
-@tag
+
 Feature:  Login Action
 
-@tag1
-Scenario: Successful Login with Valid Credentials
+Scenario: launch app
 	Given User is on Home Page
-	When User Navigate to LogIn Page
-	And User enters UserName and Password
-	Then Message displayed Login Successfully
 
-@tag2
+Scenario Outline: Successful Login with Valid Credentials
+	And User enters "<username>" and "<password>"
+	Then Message displayed Login Successfully
+Examples:
+|      username               |  password  |
+|pranjalijaiswal119@gmail.com |alldbest@119|
+
 Scenario: Successful LogOut
 	When User LogOut from the Application
 	Then Message displayed LogOut Successfully
+
+
+ 

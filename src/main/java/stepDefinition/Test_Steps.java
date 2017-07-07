@@ -19,13 +19,13 @@ import pages.LoginPage;
 
 public class Test_Steps 
 {
-	 WebDriver driver;
+	 static WebDriver driver;
 	 LoginPage login=new LoginPage();
 	 LogOut logout=new LogOut();
 	 HomePage home=new HomePage();
 	
 	@Given("^User is on Home Page$")
-	public void User_is_on_Home_Page() throws Throwable
+	public void User_is_on_Home_Page()
 	{
 		System.setProperty("webdriver.chrome.driver","C:/Users/prakhersrivastava/Downloads/chromedriver_win32/chromedriver.exe");
  		driver =new ChromeDriver();
@@ -36,18 +36,18 @@ public class Test_Steps
 	   // throw new PendingException();
 	}
 	@When("^User enters \"(.*)\" and \"(.*)\"$")
-	public void User_enters_Credentials_to_LogIn(String username,String password) throws Throwable
+	public void User_enters_Credentials_to_LogIn(String username,String password) throws InterruptedException 
 	{
-		login.LoginPageInitial(this.driver);
+		login.LoginPageInitial(driver);
+		//System.out.println(driver);
         login.loginToGmail(username, password);
-        System.out.println(username+"....."+password);
 	    // Express the Regexp above with the code you wish you had
 	    // For automatic conversion, change DataTable to List<YourType>
 	    //throw new PendingException();
 	}
 
 	@Then("^Message displayed Login Successfully$")
-	public void Message_displayed_Login_Successfully() throws Throwable 
+	public void Message_displayed_Login_Successfully() 
 	{
 		System.out.println("Login Successfully");
 	    // Express the Regexp above with the code you wish you had
@@ -55,7 +55,7 @@ public class Test_Steps
 	}
 
 	@When("^User LogOut from the Application$")
-	public void User_LogOut_from_the_Application() throws Throwable
+	public void User_LogOut_from_the_Application()
 	{
 		logout.LogOutInitial(driver);
 		logout.click_mainButton();

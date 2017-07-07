@@ -3,6 +3,8 @@ import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class LoginPage
@@ -17,13 +19,15 @@ public class LoginPage
 	    public LoginPage() {
 			// TODO Auto-generated constructor stub
 		}
-	    public void LoginPageInitial(WebDriver driver)
+	    public void LoginPageInitial(WebDriver driver) throws InterruptedException
 	    {
 	        this.driver = driver;
 	    }
 		public void setUserName(String strUserName)
 	    {
-          driver.findElement(userName).sendKeys(strUserName);
+			//System.out.println(strUserName);
+			//System.out.println(driver);
+             driver.findElement(userName).sendKeys(strUserName);
 	    }
 	    public void clickNext()
 	    {
@@ -31,10 +35,12 @@ public class LoginPage
 	    }
 	    public void setPassword(String strPassword)
 	    {
+	    	WebDriverWait wait = new WebDriverWait(driver, 50);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(password));
             driver.findElement(password).sendKeys(strPassword);
 	    }
 	    public void pwd_next()
-	    {
+	    {  	
 	    	driver.findElement(password_next).click();
 	    }
 		public void loginToGmail(String username, String password)

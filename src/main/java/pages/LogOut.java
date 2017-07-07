@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LogOut 
 {
@@ -18,6 +20,8 @@ public class LogOut
 	}
 	public void click_mainButton()
 	{
+		WebDriverWait wait = new WebDriverWait(driver, 50);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(mainButton));
 		driver.findElement(mainButton).click();
 	}
 	public void click_signOut()
